@@ -5,6 +5,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+.cache/
+.env
+.DS_Store
+coverage/
+.vscode/
+
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
