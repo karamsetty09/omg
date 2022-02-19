@@ -1,7 +1,8 @@
  import { useState, useEffect } from "react";
  import Pet from './Pet';
+ import useBreedList from './useBreedList';
 
- const animals = ["dog", "cat", "bird", "hens"];
+ const animals = ["dog", "cat", "bird", "rabbit", "reptile"];
 
  const SearchParams = () => {
    // const locationTuple = useState("Seattle, WA");
@@ -12,7 +13,7 @@
    const [animal, setAnimal] = useState("");// should have "" comma's
    const [breed, setBreed] = useState("");
    const [pets, setPets] = useState([]);
-   const breeds = [];
+   const [breeds] = useBreedList(animal);
 
    useEffect(() => {
        requestPets();
