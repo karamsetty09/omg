@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Pet from "./Pet";
+import Results from "./Results";
 import useBreedList from "./useBreedList";
 
 const animals = ["dog", "cat", "bird", "rabbit", "reptile"];
@@ -9,7 +9,7 @@ const SearchParams = () => {
   // const location = locationTuple[0];
   // const setLocation = locationTuple[1];
   // Above three lines can be converted to below one line - object destructuring.
-  const [location, setLocation] = useState("Seattle, WA");
+  const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState(""); // should have "" comma's
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
@@ -34,7 +34,12 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-      <form>
+      <form onSubmit={
+          e => {
+              e.preventDefault();
+              requestPets();
+          }
+      }>
         <label htmlFor="location">
           Location
           <input
@@ -79,14 +84,7 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
-      {pets.map((pet) => (
-        <Pet
-          name={pet.name}
-          animal={pet.animal}
-          breed={pet.breed}
-          key={pet.id}
-        ></Pet>
-      ))}
+      <Results pets = {pets} />
     </div>
   );
 };
