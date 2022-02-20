@@ -2,13 +2,16 @@
 // this component deals with cretion of component usign class(old way).
 
 import { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom"; //eslint-disable-line
 
 class Details extends Component {
-  constructor() {
-    super();
-    this.state = { loading: true };
-  }
+    state  = {loading: true};
+//  npm i -D @babel/plugin-proposal-class-properties@7.13.0 @babel/preset-env@7.13.5 @babel/eslint-parser@17.13.4
+//  By installing above three below code can be shortened. 
+//   constructor() {
+//     super();
+//     this.state = { loading: true };
+//   }
   async componentDidMount() {
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`
@@ -33,6 +36,9 @@ class Details extends Component {
     // })
   }
   render() {
+    if(this.state.loading){
+        return <h2>Loading ...</h2>
+    }
     const {animal, breed, city, state, description, name} = this.state;
      return (
         <div className="details">
