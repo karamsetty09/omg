@@ -37,13 +37,12 @@ class Details extends Component {
     //     animal: json.pets[0].animal,
     // })
   }
-  
+
   render() {
     if(this.state.loading){
         return <h2>Loading ...</h2>
     }
     const {animal, breed, city, state, description, images, name} = this.state;
-
      return (
         <div className="details">
             <Carousel images={images}></Carousel>
