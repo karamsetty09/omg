@@ -3,6 +3,7 @@
 
 import { Component } from "react";
 import { withRouter } from "react-router-dom"; //eslint-disable-line
+import Carousel from "./Carousal";
 
 class Details extends Component {
     state  = {loading: true};
@@ -39,9 +40,10 @@ class Details extends Component {
     if(this.state.loading){
         return <h2>Loading ...</h2>
     }
-    const {animal, breed, city, state, description, name} = this.state;
+    const {animal, breed, city, state, description, images, name} = this.state;
      return (
         <div className="details">
+            <Carousel images={images}></Carousel>
             <div>
                 <h1>{name}</h1>
                 <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
