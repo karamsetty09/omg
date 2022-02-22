@@ -4,6 +4,7 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom"; //eslint-disable-line
 import Carousel from "./Carousal";
+import ErrorBoundary from "./ErrorBoundary";
 
 class Details extends Component {
     state  = {loading: true};
@@ -36,6 +37,7 @@ class Details extends Component {
     //     animal: json.pets[0].animal,
     // })
   }
+
   render() {
     if(this.state.loading){
         return <h2>Loading ...</h2>
@@ -54,4 +56,13 @@ class Details extends Component {
     );
   }
 }
-export default withRouter(Details);
+
+const DetailsWithRouter = withRouter(Details);
+
+export default function DetailsWithErrorBoundary(){
+    return (
+        <ErrorBoundary>
+            <DetailsWithRouter></DetailsWithRouter>
+        </ErrorBoundary>
+    )
+};

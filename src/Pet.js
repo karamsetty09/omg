@@ -19,7 +19,7 @@
 
 //     );
 // };
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; //eslint-disable-line
 
 const Pet = (props) => {
     const { name, animal, breed, images, location, id } = props;
