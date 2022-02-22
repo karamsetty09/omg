@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SearchParams from './SearchParams';
 import Details from "./Details";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"; //eslint-disable-line
 
 const App = () => {
     return(
