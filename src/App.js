@@ -1,36 +1,42 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
+import ThemeContext from "./ThemeContext";
 import React from "react";
 import ReactDOM from "react-dom";
-import SearchParams from './SearchParams';
+import SearchParams from "./SearchParams";
 import Details from "./Details";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"; //eslint-disable-line
 
 const App = () => {
-    return(
-        <div>
-        
+  const theme = useState("blue");
+
+  return (
+    <ThemeContext.Provider value={theme}>
+      <div>
         <Router>
-            <header>
-                <Link to="/">
-                    <h1>Adopt Me!</h1>
-                </Link>
-            </header>
-            <Switch>
-                <Route path="/details/:id">
-                    <Details />
-                </Route>
-                <Route path="/">
-                    <SearchParams />
-                </Route>
-            </Switch>
+          <header>
+            <Link to="/">
+              <h1>Adopt Me!</h1>
+            </Link>
+          </header>
+          <Switch>
+            <Route path="/details/:id">
+              <Details />
+            </Route>
+            <Route path="/">
+            <ThemeContext.Provider value={theme}>
+              <SearchParams />
+            </ThemeContext.Provider>
+            </Route>
+          </Switch>
         </Router>
-        
-    </div>
-    );
+      </div>
+    </ThemeContext.Provider>
+  );
 };
 
 ReactDOM.render(
-    <StrictMode>
-        <App />
-    </StrictMode>,
-    document.getElementById("root"));
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);
